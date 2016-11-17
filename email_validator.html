@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="JS_Classes/Mailbox_Layer.js"></script>
+</head>
+
+<body>
+Email Validator!<br>
+Email:<br>
+
+<input id="email" type="text"><br>
+<button onclick="run();">Check Email!</button><br>
+
+<br><br>
+<p id="p1"></p><br>
+
+<script>
+function run(){
+    var mb_layer = new Mailbox_Layer();
+    var check = mb_layer.checkEmail(document.getElementById("email").value);
+
+    if(check == true){
+        document.getElementById("p1").innerHTML = "Email is valid!";
+    }
+    else if(check == false){
+        document.getElementById("p1").innerHTML = "Email is not valid!";
+    }   
+}
+</script>
+
+</body>
+</html>
