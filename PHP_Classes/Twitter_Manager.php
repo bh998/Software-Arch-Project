@@ -12,7 +12,7 @@ class Twitter_Manager {
         $cb = \Codebird\Codebird::getInstance();
         \Codebird\Codebird::setBearerToken($this->token);
         $cb->setReturnFormat(CODEBIRD_RETURNFORMAT_JSON);
-        $reply = (array)$cb->search_tweets('q=$' . $stock, true);
+        $reply = $cb->search_tweets('q=$' . $stock, true);
         return $reply;
     }
 
