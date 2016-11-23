@@ -2,9 +2,9 @@
 
 //php twitter library found on github
 //link is https://github.com/jublonet/codebird-php
-require_once('../Libraries/codebird-php-develop/src/codebird.php');
+require_once('../../Libraries/codebird-php-develop/src/codebird.php');
 
-class Twitter_Manager {
+class Twitter_API {
 
     var $token = "AAAAAAAAAAAAAAAAAAAAANrjxwAAAAAAJIr47%2FLI4jbswGYCrG7ZT2t%2F2uE%3DpcRa27XvcsY2WG0kETHuKn0Yasp2rFxGv2Eq3lUPtrayVKdbUu";
 

@@ -1,7 +1,7 @@
 function Financial_API(){
     //the sources array contains the list of related news sites that can be used
     sources = ["the-wall-street-journal", "financial-times", "business-insider", "fortune"]
-    source = sources[1];
+    source = sources[0];
     api_key = "b8bd0d5fcb8941b9b528a71f83f8302f";
 }
 

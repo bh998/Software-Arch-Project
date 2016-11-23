@@ -5,6 +5,7 @@
 
 
 Twitter Stock News!<br>
+*stock news from tweets*<br>
 
 <br><br>
 
@@ -14,14 +15,14 @@ Stock: <br><input type="text" name="stock"><br>
 </form>
 
 <?php
-require_once('Twitter_Manager.php');
+require_once('../Classes/Twitter_API.php');
+
 if(isset($_GET['stock']) && $_GET['stock'] != null){
-    $twitter = new Twitter_Manager();
+    $twitter = new Twitter_API();
     $json = $twitter->getStockTweets($_GET['stock']); 
     $tweets = json_decode($json, true);
 
     $numTweets = 10;
-    //var_dump($tweets);
     $x = 0;
     while($x < $numTweets){
         echo "<p>";
