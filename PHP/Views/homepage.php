@@ -10,7 +10,7 @@ session_start();
 <body>
 
 <?php
-echo "<h3>Welcome " . $_SESSION["email"] . "!</h3>";
+echo "<h3>Welcome " . $_SESSION["username"] . "!</h3>";
 ?>
 <p>Choose a link to begin.</p>
 
