@@ -1,24 +1,20 @@
 <?php
-$db = new mysqli("localhost", "root", "ab1234", "myDB");
-
-if($db->connect_error){
-die("Connection failed: " . $db->connect_error);
-}
-echo "Connected successfully";
+require_once("../Classes/Database.php");
 
 $sql = "Select id from Users where user_name = '".$_POST['username']."' and password = SHA('".$_POST['password']."')";
 
-$result = $db->query($sql);
+$database = new Database();
+$database->open();
+
+$result = $database->send_query($sql);
+$database->close();
 
 if($result->num_rows == 0){
-    echo $db->error;
-    $db->close();
     header("Location: ../../index.html");
     exit();
 }
 else{
     echo "Success";
-    $db->close();
     session_start();
     $_SESSION['username'] = $_POST['username'];
     header("Location: ../Views/homepage.php");

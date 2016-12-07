@@ -10,6 +10,11 @@ session_start();
 <body>
 
 <?php
+if(is_null($_SESSION["username"])){
+    echo "<h4>I'm sorry you are not allowed to access this page.</h4>";
+    echo "<a href='../../index.html'>Please Login.</a>";
+    exit();
+}
 echo "<h3>Welcome " . $_SESSION["username"] . "!</h3>";
 ?>
 <p>Choose a link to begin.</p>
