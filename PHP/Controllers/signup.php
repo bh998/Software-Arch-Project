@@ -4,7 +4,7 @@ $username = $_POST['username'];
 $email = $_POST['email'];
 $password = $_POST['password'];
 
-$db = new mysqli("localhost", "root", "Rawrlion234", "myDB");
+$db = new mysqli("localhost", "root", "ab1234", "myDB");
 
 if($db->connect_error){
     die("Connection failed: " . $db->connect_error);
