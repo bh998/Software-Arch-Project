@@ -14,7 +14,6 @@ class Database {
 	if($this->db->connect_error){
     	    die("Connection failed: " . $this->db->connect_error);
 	}
-	echo "Connected successfully";
     }
 
     public function close(){
@@ -23,7 +22,6 @@ class Database {
 	if($this->db->error){
 	    echo "Closing database failed.";
 	}
-	echo "Closed Successfully";
     }
 
 
@@ -35,9 +33,29 @@ class Database {
 	    return false;
 	}
 	else{
-    	    echo "Success";
 	    return $result;
 	}
+    }
+
+    public function get_user($email){
+	$query = "Select * from Users where email = '" . $email . "'";
+	$result = $this->send_query($query);
+	$row = $result->fetch_row();
+	$array = array("id" => $row[0], "user" => $row[1], "email" => $row[2], "balance" => $row[4], "pandl" => $row[5]);
+	return $array;
+    }
+
+    public function get_funds($id){
+	$query = "Select balance from Users where id = " . $id;
+	$result = $this->send_query($query);
+	$row = $result->fetch_row();
+	$array = array("balance" => $row[0]);
+	return $array;
+    }
+
+    public function add_funds($id, $amount){
+	$query = "Update Users Set balance=" . $amount . " where id = " . $id;
+	$result = $this->send_query($query);
     }
 }
 

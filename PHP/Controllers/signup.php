@@ -9,7 +9,7 @@ $database = new Database();
 $database->open();
 
 
-$sql = "Insert into Users values (null, '" . $username . "', '" . $email . "', SHA('" . $password . "'))";
+$sql = "Insert into Users values (null, '" . $username . "', '" . $email . "', SHA('" . $password . "'), 0, 0)";
 $database->send_query($sql);
 
 $database->close();
