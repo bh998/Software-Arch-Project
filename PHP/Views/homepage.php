@@ -1,51 +1,58 @@
-<?php
-session_start();
-?>
-
-
-<!DOCTYPE html>
 <html>
 <head>
 
 <link rel="stylesheet" href="../../Libraries/bootstrap-3.3.7-dist/css/bootstrap.min.css">
 <script src="../../Libraries/jquery-3.1.1.js"></script>
 <script src="../../Libraries/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script src="../../JS/Classes/Financial_API.js"></script>
 
 </head>
 
 <body>
-<div class="container-fluid">
-  <div class="row">
-    <h3 class="bg-info text-center">Welcome To Tradier Stock System</h3>
-  </div>
-  <div class="row">
-  <div class="btn-group btn-group-justified">
-    <a href="homepage.php" class="btn btn-primary">Home</a>
-    <a href="account.php" class="btn btn-primary">Account</a>
-  </div>
-  </div>
-</div>
+<?php
+require_once("../Controllers/print_menu.php");
+print_menu();
+?>
 
-<br>
-<button type="button" class="btn btn-default">
-<span class="glyphicon glyphicon-hand-up"></span>
-<a href="financial_api.html">Financial News!</a>
-</button><br><br>
+<h3>Financial News!</h3>
+<h4>*news from The Wall Street Journal*</h4><br>
+<p id="articles"></p>
 
-<button type="button" class="btn btn-default">
-<span class="glyphicon glyphicon-hand-up"></span>
-<a href="email_validator.html">Email Validator!</a>
-</button><br><br>
+<script>
+    //call to the financial api class that gets the news info
+    var financial = new Financial_API();
+    var obj = financial.getNews();
+    var article_num = 5; //specifies the number of articles to grab
+    var pic_height = "300px";
+    var pic_width = "500px";
 
-<button type="button" class="btn btn-default">
-<span class="glyphicon glyphicon-hand-up"></span>
-<a href="tradier_api.html">Tradier Info!</a>
-</button><br><br>
-
-<button type="button" class="btn btn-default">
-<span class="glyphicon glyphicon-hand-up"></span>
-<a href="twitter_api.php">Twitter Search!</a>
-</button><br><br>
+    //formatting, needs to be updated
+    var x = 0;
+    while(x < article_num){
+        var para = document.createElement("p");
+        var link = document.createElement("a");
+        var image = document.createElement("img");
+        image.src = obj.articles[x].urlToImage;
+        image.style = "width:" + pic_width + ";height:" + pic_height;
+        link.href = obj.articles[x].url;
+        link.appendChild(image);
+        para.appendChild(document.createTextNode("Author: " + obj.articles[x].author));
+        para.appendChild(document.createElement("br"));
+	para.appendChild(document.createTextNode("Title: " + obj.articles[x].title));
+        para.appendChild(document.createElement("br"));
+        para.appendChild(document.createTextNode("Description: " + obj.articles[x].description));
+        para.appendChild(document.createElement("br"));
+        para.appendChild(document.createTextNode("Published: " + obj.articles[x].publishedAt));
+        para.appendChild(document.createElement("br"));
+        para.appendChild(link);
+        para.appendChild(document.createElement("br"));
+        para.appendChild(document.createTextNode("*click picture to go to full article*"));
+	document.getElementById("articles").appendChild(para);
+        para.appendChild(document.createElement("br"));
+        para.appendChild(document.createElement("br"));
+        x++;
+    }
+</script>
 
 </body>
 

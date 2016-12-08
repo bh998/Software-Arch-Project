@@ -1,7 +1,7 @@
 <?php
 require_once("../Classes/Database.php");
 
-$sql = "Select id from Users where user_name = '".$_POST['username']."' and password = SHA('".$_POST['password']."')";
+$sql = "Select id from Users where email = '".$_POST['email']."' and password = SHA('".$_POST['password']."')";
 
 $database = new Database();
 $database->open();
@@ -16,7 +16,7 @@ if($result->num_rows == 0){
 else{
     echo "Success";
     session_start();
-    $_SESSION['username'] = $_POST['username'];
+    $_SESSION['email'] = $_POST['email'];
     header("Location: ../Views/homepage.php");
     exit();
 }
