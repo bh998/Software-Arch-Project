@@ -7,7 +7,7 @@ $database->open();
 
 $array = $database->get_funds($_POST['id']);
 $funds = $array[balance] + $_POST['amount'];
-$database->add_funds($_POST['id'], $funds);
+$database->set_funds($_POST['id'], $funds);
 
 $database->close();
 

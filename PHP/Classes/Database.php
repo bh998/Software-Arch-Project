@@ -53,8 +53,13 @@ class Database {
 	return $array;
     }
 
-    public function add_funds($id, $amount){
+    public function set_funds($id, $amount){
 	$query = "Update Users Set balance=" . $amount . " where id = " . $id;
+	$result = $this->send_query($query);
+    }
+
+    public function buy_stock($id, $stock, $amount, $price){
+	$query = "Insert into Stocks values (null, '$stock', $id, $amount, $price)";
 	$result = $this->send_query($query);
     }
 }
