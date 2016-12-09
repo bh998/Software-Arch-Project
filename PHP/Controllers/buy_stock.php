@@ -21,6 +21,7 @@ if($cost > $funds[balance]){
 else{
     $database->set_funds($_POST['id'], $leftover);
     $database->buy_stock($_POST['id'], $_POST['stock'], $_POST['amount'], $_POST['price']);
+    $database->insert_transaction("Bought", $_POST['id'], $_POST['stock'], $_POST['amount'], $_POST['price']);
     $database->close();
     header("Location: ../Views/account.php");
     exit();

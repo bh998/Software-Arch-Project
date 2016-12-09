@@ -7,7 +7,7 @@ if($db->connect_error){
 }
 echo "Connected successfully\n";
 
-$sql = "drop table Users, Stocks";
+$sql = "drop table Users, Stocks, Transactions";
 $db->query($sql);
 
 $sql = "Create table Users (id INT auto_increment primary key, user_name varchar(30), email varchar(30), password varchar(64), balance float, pandl float)";
@@ -21,6 +21,14 @@ else{
 $sql = "Create table Stocks (id INT auto_increment primary key, name varchar(20), user_id int, amount int, price float)";
 if($db->query($sql) === TRUE){
     echo "Successfully Created Table Stocks\n";
+}
+else{
+    echo $db->error;
+}
+
+$sql = "Create table Transactions (id INT auto_increment primary key, type varchar(20), user_id int, stock varchar(20), amount int, price float)";
+if($db->query($sql) === TRUE){
+    echo "Successfully Created Table Transactions\n";
 }
 else{
     echo $db->error;

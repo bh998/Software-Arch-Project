@@ -11,6 +11,7 @@ function print_menu(){
 	    <a href="homepage.php" class="btn btn-primary">Home</a>
 	    <a href="account.php" class="btn btn-primary">Account</a>
 	    <a href="stocks.php" class="btn btn-primary">Stocks</a>
+	    <a href="history.php" class="btn btn-primary">History</a>
 	  </div>
 	  </div>
 	  </div>';

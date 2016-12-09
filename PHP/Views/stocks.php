@@ -85,7 +85,7 @@ if(isset($_GET['stock']) && $_GET['stock'] != null){
 		<div class='form-group'>
 		  <input type='hidden' name='id' value=$user_info[id]>
 		  <input id='buy_price' type='hidden' name='price'>
-		  <input id='stock' type='hidden' name='stock' value='$" . $_GET['stock'] . "'>
+		  <input id='stock' type='hidden' name='stock' value='" . $_GET['stock'] . "'>
 		</div>
 		<div class='form-group'>
 		  <button type='submit' class='btn btn-primary'>Buy</button>

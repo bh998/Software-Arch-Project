@@ -45,6 +45,17 @@ class Database {
 	return $array;
     }
 
+    public function get_stocks($id){
+	$query = "Select * from Stocks where user_id = $id";
+	$result = $this->send_query($query);
+	$stocks = array();
+	while($row = $result->fetch_row()){
+	  $array = array("id" => $row[0], "name" => $row[1], "amount" => $row[3], "price" => $row[4]);
+	  array_push($stocks, $array);
+	}
+	return $stocks;
+    }
+
     public function get_funds($id){
 	$query = "Select balance from Users where id = " . $id;
 	$result = $this->send_query($query);
@@ -61,6 +72,41 @@ class Database {
     public function buy_stock($id, $stock, $amount, $price){
 	$query = "Insert into Stocks values (null, '$stock', $id, $amount, $price)";
 	$result = $this->send_query($query);
+    }
+
+    public function sell_stock($stock_id){
+	$query = "Delete From Stocks where id = " . $stock_id;
+	$result = $this->send_query($query);
+    }
+
+    public function update_stock($stock_id, $amount){
+	$query = "Update Stocks Set amount=" . $amount . " where id = " . $stock_id;
+	$result = $this->send_query($query);
+	echo "$query";
+    }
+
+    public function get_stock($stock_id){
+	$query = "Select * from Stocks where id = " . $stock_id;
+	$result = $this->send_query($query);
+	$row = $result->fetch_row();
+	$array = array("id" => $row[0], "name" => $row[1], "amount" => $row[3], "price" => $row[4]);
+	return $array;
+    }
+
+    public function insert_transaction($type, $user_id, $stock, $amount, $price){
+        $query = "Insert into Transactions values (null, '$type', '$user_id', '$stock', $amount, $price)";
+	$result = $this->send_query($query);
+    }
+
+    public function get_transactions($id){
+	$query = "Select * from Transactions where user_id = $id";
+	$result = $this->send_query($query);
+	$transactions = array();
+	while($row = $result->fetch_row()){
+	  $array = array("id" => $row[0], "type" => $row[1], "stock" => $row[3], "amount" => $row[4], "price" => $row[5]);
+	  array_push($transactions, $array);
+	}
+	return $transactions;
     }
 }
 
