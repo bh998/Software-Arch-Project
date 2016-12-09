@@ -28,7 +28,7 @@ echo "<div class='row'><h3>Past Transactions<h3></div>";
 foreach($transactions as $transaction){
   echo "<div class='row'>";
   echo "<div class='col-sm-2'><h4>Type: $transaction[type]<h4></div>";
-  echo "<div class='col-sm-2'><h4>Stock: $transaction[stock]<h4></div>";
+  echo "<div class='col-sm-2'><h4>Stock: \$$transaction[stock]<h4></div>";
   echo "<div class='col-sm-2'><h4>Amount: $transaction[amount]<h4></div>";
   echo "<div class='col-sm-2'><h4>Price: \$$transaction[price]<h4></div>";
   echo "</div>";
