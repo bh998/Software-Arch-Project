@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="../../Libraries/bootstrap-3.3.7-dist/css/bootstrap.min.css">
 <script src="../../Libraries/jquery-3.1.1.js"></script>
 <script src="../../Libraries/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-
+<script src="../../JS/Classes/Tradier_API.js"></script>
 </head>
 
 <body>

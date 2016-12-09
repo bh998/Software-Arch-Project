@@ -39,6 +39,14 @@ else{
 $database->close();
 
 ?>
+<input type='hidden' id='purchase_price'>
+<script>
+//function that gets the stock data from tradier and adds it to the html    
+    var tradier = new Tradier_API();
+    var obj = tradier.getStock(<?php $stock[name]?>);
+    
+    document.getElementById('purchase_price').value = obj.quotes.quote.bid;
+</script>
 
 </body>
 </html>
